@@ -12,5 +12,9 @@ class Room
     return @songs.size()
   end
 
+  def guest_count()
+    return @guests.size()
+  end
+
 
 end

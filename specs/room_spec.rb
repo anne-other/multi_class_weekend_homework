@@ -21,4 +21,8 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room.song_number())
   end
 
+  def test_guests_are_0
+    assert_equal(0, @room.guest_count())
+  end
+
 end
