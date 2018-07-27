@@ -16,8 +16,12 @@ class Room
     return @guests.size()
   end
 
-  def check_in_guests(guest)
-    @guests << guest
+  def check_in_guests(guests)
+    if guests.class != Array
+      @guests << guests
+    else
+      guests.each { |guest| @guests << guest }
+    end
   end
 
 
