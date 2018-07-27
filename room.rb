@@ -24,8 +24,12 @@ class Room
     end
   end
 
-  def check_out_guests(guest)
-    @guests.delete(guest)
+  def check_out_guests(guests)
+    if guests.class != Array
+      @guests.delete(guests)
+    else
+      guests.each { |guest| @guests.delete(guest)}
+    end
   end
 
 
