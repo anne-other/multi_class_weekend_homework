@@ -10,7 +10,7 @@ class SongTest < MiniTest::Test
   end
 
   def test_song_has_name()
-    assert_equal("Skeptic", @song.song_name())
+    assert_equal("Skeptic", @song.title())
   end
 
   def test_song_has_artist()
