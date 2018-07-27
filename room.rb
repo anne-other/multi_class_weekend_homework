@@ -16,5 +16,9 @@ class Room
     return @guests.size()
   end
 
+  def check_in_guests(guest)
+    @guests << guest
+  end
+
 
 end
