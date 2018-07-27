@@ -24,5 +24,9 @@ class Room
     end
   end
 
+  def check_out_guests(guest)
+    @guests.delete(guest)
+  end
+
 
 end
