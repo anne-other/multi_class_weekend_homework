@@ -39,9 +39,7 @@ class Room
   end
 
   def within_capacity()
-    if guest_count() <= @max_capacity
-      return true
-    end
+    return guest_count() <= @max_capacity? true : false
   end
 
 

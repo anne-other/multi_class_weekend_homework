@@ -62,12 +62,21 @@ class RoomTest < MiniTest::Test
     assert_equal(4, @room.song_number())
   end
 
-  def test_check_out_guests__within_capacity()
+  def test_check_in_guests__within_capacity()
     @room.check_in_guests(@guests)
     result = @room.within_capacity()
     assert_equal(true, result)
   end
 
-
+  def test_check_in_guests__max_capacity()
+    guest4 = Guest.new("Darren")
+    guest5 = Guest.new("David")
+    guest6 = Guest.new("Anna")
+    guests2 = [guest4, guest5, guest6]
+    @room.check_in_guests(@guests)
+    @room.check_in_guests(guests2)
+    result = @room.within_capacity()
+    assert_equal(false, result)
+  end
 
 end
