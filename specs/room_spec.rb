@@ -12,7 +12,7 @@ class RoomTest < MiniTest::Test
     song2 = Song.new("In Too Deep", "Sum 41")
     song3 = Song.new("Rock Show", "Halestorm")
 
-    @room = Room.new(1, [song1, song2, song3])
+    @room = Room.new(1, [song1, song2, song3], 5)
 
     @guest1 = Guest.new("Anne")
     @guest2 = Guest.new("Richard")
@@ -61,5 +61,13 @@ class RoomTest < MiniTest::Test
     @room.add_song(song4)
     assert_equal(4, @room.song_number())
   end
+
+  def test_check_out_guests__within_capacity()
+    @room.check_in_guests(@guests)
+    result = @room.within_capacity()
+    assert_equal(true, result)
+  end
+
+
 
 end
