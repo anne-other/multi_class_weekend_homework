@@ -103,4 +103,5 @@ class RoomTest < MiniTest::Test
     assert_equal(true, result)
   end
 
+
 end

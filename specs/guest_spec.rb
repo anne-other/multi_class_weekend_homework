@@ -4,6 +4,7 @@ require('minitest/rg')
 require_relative('../guests.rb')
 require_relative('../room.rb')
 require_relative('../song.rb')
+require_relative('../drink.rb')
 
 class GuestTest < MiniTest::Test
 
@@ -43,6 +44,12 @@ class GuestTest < MiniTest::Test
     guest2 = Guest.new("Richard", 10, "Spit It Out")
     result = guest2.have_fav_song(@room)
     assert_equal("Boo!", result)
+  end
+
+  def test_buy_drink()
+    drink = Drink.new("Cider", 4)
+    @guest.buy_drink(drink)
+    assert_equal(46, @guest.wallet())
   end
 
 
