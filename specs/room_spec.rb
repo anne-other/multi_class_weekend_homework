@@ -9,15 +9,15 @@ class RoomTest < MiniTest::Test
 
   def setup()
     song1 = Song.new("Skeptic", "Slipknot", "Only when the fates, Commiserate ...")
-    song2 = Song.new("In Too Deep", "Sum 41", "The faster we're falling ...")
+    @song2 = Song.new("In Too Deep", "Sum 41", "The faster we're falling ...")
     song3 = Song.new("Rock Show", "Halestorm", "You like it loud, Come alive in the middle of a crowd ...")
 
-    @room = Room.new(1, [song1, song2, song3], 3, 10)
+    @room = Room.new(1, [song1, @song2, song3], 3, 10)
 
-    @guest1 = Guest.new("Anne", 50)
-    @guest2 = Guest.new("Richard", 10)
-    guest3 = Guest.new("Sam", 60)
-    @guest4 = Guest.new("Anna", 100)
+    @guest1 = Guest.new("Anne", 50, "In Too Deep")
+    @guest2 = Guest.new("Richard", 10, "Spit It Out")
+    guest3 = Guest.new("Sam", 60, "Nightmare")
+    @guest4 = Guest.new("Anna", 100, "Supermassive Blackhole")
 
 
 
@@ -87,7 +87,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_integration_of_capacity_and_check_in_multiple_over()
-    guest_extra = Guest.new("Beckett", 1000)
+    guest_extra = Guest.new("Beckett", 1000, "The Sickness")
     @room.check_in_guests(@guests)
     result = @room.check_in_guests([@guest4, guest_extra])
     assert_equal(3, @room.guest_count)
@@ -96,6 +96,11 @@ class RoomTest < MiniTest::Test
 
   def test_room_has_entrance_fee()
     assert_equal(10, @room.entrance_fee())
+  end
+
+  def test_find_song_by_title()
+    result = @room.find_song(@guest1.fav_song())
+    assert_equal(@song2, result)
   end
 
 end

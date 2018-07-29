@@ -57,5 +57,13 @@ class Room
     end
   end
 
+  def find_song(title)
+    @songs.each do |song|
+      if song.title == title
+        return song
+      end
+    end
+  end
+
 
 end
