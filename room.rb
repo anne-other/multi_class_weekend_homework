@@ -1,3 +1,5 @@
+# require('pry')
+
 class Room
 
   attr_reader :room_number
@@ -24,6 +26,7 @@ class Room
     else
       guests.each { |guest| @guests << guest }
     end
+    over_capacity()
   end
 
   def check_out_guests(guests)
@@ -40,6 +43,18 @@ class Room
 
   def within_capacity()
     return guest_count() <= @max_capacity? true : false
+  end
+
+  def over_capacity()
+    too_many = []
+    while within_capacity == false
+      guest = @guests.pop()
+      too_many << guest.name()
+    end
+    if too_many.size() > 0
+      names = too_many.reduce { |name, other| name + ", " + other}
+      return "Sorry #{names}, the capacity for this room has been reached"
+    end
   end
 
 

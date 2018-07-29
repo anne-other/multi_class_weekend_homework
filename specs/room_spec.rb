@@ -12,13 +12,17 @@ class RoomTest < MiniTest::Test
     song2 = Song.new("In Too Deep", "Sum 41")
     song3 = Song.new("Rock Show", "Halestorm")
 
-    @room = Room.new(1, [song1, song2, song3], 5)
+    @room = Room.new(1, [song1, song2, song3], 3)
 
     @guest1 = Guest.new("Anne")
     @guest2 = Guest.new("Richard")
-    @guest3 = Guest.new("Sam")
+    guest3 = Guest.new("Sam")
+    @guest4 = Guest.new("Anna")
 
-    @guests = [@guest1, @guest2, @guest3]
+
+
+    @guests = [@guest1, @guest2, guest3]
+
 
   end
 
@@ -63,20 +67,23 @@ class RoomTest < MiniTest::Test
   end
 
   def test_check_in_guests__within_capacity()
-    @room.check_in_guests(@guests)
+    @room.check_in_guests([@guest1, @guest2])
     result = @room.within_capacity()
     assert_equal(true, result)
   end
 
-  def test_check_in_guests__max_capacity()
-    guest4 = Guest.new("Darren")
-    guest5 = Guest.new("David")
-    guest6 = Guest.new("Anna")
-    guests2 = [guest4, guest5, guest6]
+  # def test_check_in_guests__max_capacity()
+  #   @room.check_in_guests(@guests)
+  #   @room.check_in_guests(@guest4)
+  #   result = @room.within_capacity()
+  #   assert_equal(false, result)
+  # end
+
+  def test_integration_of_capacity_and_check_in()
     @room.check_in_guests(@guests)
-    @room.check_in_guests(guests2)
-    result = @room.within_capacity()
-    assert_equal(false, result)
+    result = @room.check_in_guests(@guest4)
+    assert_equal(3, @room.guest_count)
+    assert_equal("Sorry Anna, the capacity for this room has been reached", result)
   end
 
 end
