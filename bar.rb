@@ -20,5 +20,9 @@ class Bar
     @till += room.entrance_fee()
   end
 
+  def sell_drink(drink)
+    @till += drink.price()
+  end
+
 
 end

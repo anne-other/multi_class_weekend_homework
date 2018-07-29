@@ -11,10 +11,10 @@ class BarTest < MiniTest::Test
     @room1 = Room.new(1, [], 3, 10)
     room2 = Room.new(2, [], 5, 5)
 
-    drink1 = Drink.new("Cider", 4)
+    @drink1 = Drink.new("Cider", 4)
     drink2 = Drink.new("Cocktail", 15)
 
-    @bar = Bar.new(200, [@room1, room2], [drink1, drink2])
+    @bar = Bar.new(200, [@room1, room2], [@drink1, drink2])
   end
 
   def test_till_content()
@@ -32,6 +32,11 @@ class BarTest < MiniTest::Test
   def test_take_fee()
     @bar.take_fee(@room1)
     assert_equal(210, @bar.till())
+  end
+
+  def test_sell_drink()
+    @bar.sell_drink(@drink1)
+    assert_equal(204, @bar.till())
   end
 
 end
