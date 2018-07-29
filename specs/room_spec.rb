@@ -107,7 +107,7 @@ class RoomTest < MiniTest::Test
 
   def test_find_song_by_title__false()
     result = @room.find_song("Not a Song")
-    assert_equal(nil, result)
+    assert_nil(result)
   end
 
   def test_order_drink()
@@ -126,9 +126,14 @@ class RoomTest < MiniTest::Test
     assert_equal(3, result.size)
   end
 
-  def play_selected_song()
+  def test_play_selected_song()
     result = @room.play_selected_song("In Too Deep")
     assert_equal("The faster we're falling ...", result)
+  end
+
+  def test_play_selected_song__false()
+    result = @room.play_selected_song("Spit It Out")
+    assert_equal("Song not found", result)
   end
 
 end

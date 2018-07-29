@@ -76,7 +76,10 @@ class Room
   end
 
   def play_selected_song(title)
-    find_song(title)
+    song = find_song(title)
+    if song == nil
+      return "Song not found"
+    end
     return song.tune()
   end
 
