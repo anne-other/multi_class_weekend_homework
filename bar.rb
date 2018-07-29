@@ -16,5 +16,9 @@ class Bar
     return @drinks.size()
   end
 
+  def take_fee(room)
+    @till += room.entrance_fee()
+  end
+
 
 end
