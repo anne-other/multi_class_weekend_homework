@@ -79,11 +79,19 @@ class RoomTest < MiniTest::Test
   #   assert_equal(false, result)
   # end
 
-  def test_integration_of_capacity_and_check_in()
+  def test_integration_of_capacity_and_check_in_one_over()
     @room.check_in_guests(@guests)
     result = @room.check_in_guests(@guest4)
     assert_equal(3, @room.guest_count)
     assert_equal("Sorry Anna, the capacity for this room has been reached", result)
+  end
+
+  def test_integration_of_capacity_and_check_in_multiple_over()
+    guest_extra = Guest.new("Beckett")
+    @room.check_in_guests(@guests)
+    result = @room.check_in_guests([@guest4, guest_extra])
+    assert_equal(3, @room.guest_count)
+    assert_equal("Sorry Beckett, Anna, the capacity for this room has been reached", result)
   end
 
 end
