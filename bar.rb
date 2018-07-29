@@ -12,5 +12,9 @@ class Bar
     return @rooms.size()
   end
 
+  def drinks()
+    return @drinks.size()
+  end
+
 
 end

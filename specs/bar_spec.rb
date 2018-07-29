@@ -25,4 +25,8 @@ class BarTest < MiniTest::Test
     assert_equal(2, @bar.rooms())
   end
 
+  def test_number_of_drinks()
+    assert_equal(2, @bar.drinks())
+  end
+
 end
