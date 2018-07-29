@@ -60,7 +60,7 @@ class Room
   def find_song(title)
     @songs.each do |song|
       if song.title == title
-        return true
+        return song
       end
     end
   end
@@ -72,6 +72,11 @@ class Room
 
   def play_songs()
     @songs.map { |song| song.tune() }
+  end
+
+  def play_selected_song(title)
+    find_song(title)
+    return song.tune()
   end
 
 

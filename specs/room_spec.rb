@@ -11,10 +11,10 @@ class RoomTest < MiniTest::Test
 
   def setup()
     song1 = Song.new("Skeptic", "Slipknot", "Only when the fates, Commiserate ...")
-    song2 = Song.new("In Too Deep", "Sum 41", "The faster we're falling ...")
+    @song2 = Song.new("In Too Deep", "Sum 41", "The faster we're falling ...")
     song3 = Song.new("Rock Show", "Halestorm", "You like it loud, Come alive in the middle of a crowd ...")
 
-    @room = Room.new(1, [song1, song2, song3], 3, 10)
+    @room = Room.new(1, [song1, @song2, song3], 3, 10)
 
     @guest1 = Guest.new("Anne", 50, "In Too Deep")
     @guest2 = Guest.new("Richard", 10, "Spit It Out")
@@ -102,7 +102,7 @@ class RoomTest < MiniTest::Test
 
   def test_find_song_by_title()
     result = @room.find_song(@guest1.fav_song())
-    assert_equal(true, result)
+    assert_equal(@song2, result)
   end
 
   def test_order_drink()
@@ -119,6 +119,11 @@ class RoomTest < MiniTest::Test
   def test_play_songs()
     result = @room.play_songs()
     assert_equal(3, result.size)
+  end
+
+  def play_selected_song()
+    result = @room.play_selected_song("In Too Deep")
+    assert_equal("The faster we're falling ...", result)
   end
 
 end

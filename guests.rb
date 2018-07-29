@@ -13,7 +13,7 @@ class Guest
   end
 
   def have_fav_song(room)
-    if room.find_song(fav_song()) == true
+    if room.find_song(fav_song()).class == Song
       return "Whoo!"
     else
       return "Boo!"
