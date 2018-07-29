@@ -1,5 +1,7 @@
 class Bar
 
+  attr_reader :till
+
   def initialize(till, rooms, drinks)
     @till = till
     @rooms = rooms

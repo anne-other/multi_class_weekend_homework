@@ -17,4 +17,8 @@ class BarTest < MiniTest::Test
     @bar = Bar.new(200, [room1, room2], [drink1, drink2])
   end
 
+  def check_till_content()
+    assert_equal(200, @bar.till())
+  end
+
 end
