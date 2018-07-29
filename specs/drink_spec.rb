@@ -13,4 +13,7 @@ class DrinkTest < MiniTest::Test
     assert_equal("Cider", @drink.drink_name())
   end
 
+  def test_drink_has_price()
+    assert_equal(4, @drink.price())
+  end
 end
