@@ -12,12 +12,12 @@ class RoomTest < MiniTest::Test
     song2 = Song.new("In Too Deep", "Sum 41")
     song3 = Song.new("Rock Show", "Halestorm")
 
-    @room = Room.new(1, [song1, song2, song3], 3)
+    @room = Room.new(1, [song1, song2, song3], 3, 10)
 
-    @guest1 = Guest.new("Anne")
-    @guest2 = Guest.new("Richard")
-    guest3 = Guest.new("Sam")
-    @guest4 = Guest.new("Anna")
+    @guest1 = Guest.new("Anne", 50)
+    @guest2 = Guest.new("Richard", 10)
+    guest3 = Guest.new("Sam", 60)
+    @guest4 = Guest.new("Anna", 100)
 
 
 
@@ -87,11 +87,15 @@ class RoomTest < MiniTest::Test
   end
 
   def test_integration_of_capacity_and_check_in_multiple_over()
-    guest_extra = Guest.new("Beckett")
+    guest_extra = Guest.new("Beckett", 1000)
     @room.check_in_guests(@guests)
     result = @room.check_in_guests([@guest4, guest_extra])
     assert_equal(3, @room.guest_count)
     assert_equal("Sorry Beckett, Anna, the capacity for this room has been reached", result)
+  end
+
+  def test_room_has_entrance_fee()
+    assert_equal(10, @room.entrance_fee())
   end
 
 end
