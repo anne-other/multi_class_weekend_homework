@@ -116,4 +116,9 @@ class RoomTest < MiniTest::Test
     assert_equal(204, bar.till())
   end
 
+  def test_play_songs()
+    result = @room.play_songs()
+    assert_equal(3, result.size)
+  end
+
 end

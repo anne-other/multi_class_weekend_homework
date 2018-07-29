@@ -70,5 +70,9 @@ class Room
     bar.sell_drink(drink)
   end
 
+  def play_songs()
+    @songs.map { |song| song.tune() }
+  end
+
 
 end
