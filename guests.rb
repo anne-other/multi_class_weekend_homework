@@ -12,4 +12,10 @@ class Guest
     @wallet -= room.entrance_fee()
   end
 
+  def have_fav_song(room)
+    if room.find_song(fav_song()) == true
+      return "Whoo"
+    end
+  end
+
 end
