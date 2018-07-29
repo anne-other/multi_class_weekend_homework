@@ -24,5 +24,4 @@ class Bar
     @till += drink.price()
   end
 
-
 end

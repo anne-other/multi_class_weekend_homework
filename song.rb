@@ -8,5 +8,4 @@ class Song
     @tune = tune
   end
 
-
 end

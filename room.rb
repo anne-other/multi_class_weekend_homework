@@ -63,6 +63,7 @@ class Room
         return song
       end
     end
+    return nil
   end
 
   def order_drink(guest, bar, drink)
@@ -78,6 +79,5 @@ class Room
     find_song(title)
     return song.tune()
   end
-
 
 end
