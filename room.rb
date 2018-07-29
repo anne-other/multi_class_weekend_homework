@@ -65,5 +65,10 @@ class Room
     end
   end
 
+  def order_drink(guest, bar, drink)
+    guest.buy_drink(drink)
+    bar.sell_drink(drink)
+  end
+
 
 end
